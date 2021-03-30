@@ -1,0 +1,5 @@
+services:
+  demomodule.event_subscriber:
+    class: Drupal\demomodule\EventSubscriber\LoginRedirect
+    tags:
+      - {name: event_subscriber}

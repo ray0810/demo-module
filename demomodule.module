@@ -1,0 +1,35 @@
+<?php
+
+/**
+ * @file
+ * Contains demomodule.module.
+ */
+
+use Drupal\demomodule\Event\UserLoginEvent;
+
+/**
+ * Implements hook_theme().
+ */
+function demomodule_theme() {
+  return [
+    'bootstrap_accordion_block' => [
+      'template'       => 'bootstrap_accordion_block',
+      'variables'      => [
+        'accordion_elements' => [],
+      ],
+      'render element' => 'children',
+    ],
+  ];
+}
+
+/**
+ * Implements hook_user_login().
+ */
+function demomodule_user_login($account) {
+  // Instantiate our event.
+  $event = new UserLoginEvent($account);
+
+  // Get the event_dispatcher service and dispatch the event.
+  $event_dispatcher = \Drupal::service('event_dispatcher');
+  $event_dispatcher->dispatch(UserLoginEvent::EVENT_NAME, $event);
+}

@@ -1,0 +1,6 @@
+name: Demo module
+description: Demo module
+package: Demo
+type: module
+core_version_requirement: ^8.8 || ^9
+version: '8.x-1.0'

@@ -1,0 +1,7 @@
+demomodule.dashboard:
+  path: '/dashboard'
+  defaults:
+    _controller: '\Drupal\demomodule\Controller\Dashboard::output'
+    _title: 'Demo dashboard'
+  requirements:
+    _role: 'authenticated'
